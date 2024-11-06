@@ -20,9 +20,4 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
-    h1 {
-      color: white;
-      text-align: center;
-      padding-top: 20%;
-    }
   </style>
