@@ -21,3 +21,4 @@
       font-family: Arial, sans-serif;
     }
   </style>
+  <p>This is a paragraph with <span style="background-color: yellow;">highlighted text</span> inside it.</p>
