@@ -1,4 +1,4 @@
-<h1><span style="background-color: white;">If you found this, congregation, I probably showed you</span></h1>
+<marquee scrollamount="16"><h1><span style="background-color: white;">If you found this, congregation, I probably showed you</span></h1></marquee>
 
 <h1><span style="background-color: white;">Blender Model, Restful Cube</span></h1>
 ![F2sh-F2sh.github.io](0000-0400.gif)
