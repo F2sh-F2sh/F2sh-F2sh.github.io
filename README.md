@@ -10,10 +10,19 @@
   <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQfvQ3gxWR2er2-Oc4E1vSGHHC9htc4C4mqv3OQZbJFIILeoyK8N1IsWemwjJwEGKY2fsskquh_T1fz/embed?start=true&loop=false&delayms=15000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </div>
 
-body {
-  background-image: url('Screenshot 2024-11-05 135107.png);
-  background-size: cover; /* Ensures the image covers the whole screen */
-  background-position: center; /* Centers the image */
-  background-attachment: fixed; /* Keeps the background fixed while scrolling */
-  height: 100vh; /* Make sure the background covers the entire viewport */
-}
+  <style>
+    body {
+      background-image: url('Screenshot 2024-11-05 135107.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      padding-top: 20%;
+    }
+  </style>
