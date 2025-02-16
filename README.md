@@ -1,4 +1,4 @@
-<marquee scrollamount="16"><h1><span style="background-color: white;">If you found this, congregation, I probably showed you</span></h1></marquee>
+<marquee scrollamount="16"><h1><span style="background-color: white;">WAAAAHHHHHHH</span></h1></marquee>
 
 <h2><span style="background-color: white;">Hedgy Lore</span></h2>
 <h3><span style="background-color: white;">Although you can watch it here, it's much better in fullscreen at this link: https://docs.google.com/presentation/d/1xmfaB8uitjqaizqg_Da7-Bi7WiUo55ZMKizd9ExVixE/edit?usp=sharing</span></h3>
