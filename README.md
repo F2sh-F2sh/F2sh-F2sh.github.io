@@ -24,7 +24,8 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
-
+  </style>
+  
 .infinite-scroll-wrapper {
   position: relative;
   display: flex;
@@ -79,4 +80,3 @@
   box-sizing: border-box;
   position: relative;
 }
-  </style>
