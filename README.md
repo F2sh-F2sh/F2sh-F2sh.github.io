@@ -25,3 +25,35 @@
       font-family: Arial, sans-serif;
     }
   </style>
+
+<button class="shine-btn">Hover me</button>
+
+<style>
+.shine-btn {
+  position: relative;
+  overflow: hidden;
+  background: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* the shine */
+.shine-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  transform: skewX(-25deg);
+  transition: 0.5s;
+}
+
+.shine-btn:hover::before {
+  left: 125%;
+}
+</style>
