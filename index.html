@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fisch</title>
+
+  <style>
+    body {
+      background-image: url("Screenshot 2024-11-05 135107.png");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+      padding: 15px 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: green;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    iframe {
+      max-width: 100%;
+    }
+
+    .cube-gif {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .shine-btn {
+      position: relative;
+      overflow: hidden;
+      background: #4caf50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .shine-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-25deg);
+      transition: 0.5s;
+    }
+
+    .shine-btn:hover::before {
+      left: 125%;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="active" href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="game/">Game</a>
+  </nav>
+
+  <main>
+    <h1>WAAAAHHHHHHH</h1>
+
+    <h2>Hedgy Lore</h2>
+
+    <h3>
+      Although you can watch it here, it's much better in fullscreen at
+      <a href="YOUR_GOOGLE_SLIDES_LINK">this link</a>.
+    </h3>
+
+    <!-- Paste your original Google Slides iframe here -->
+    <iframe
+      src="YOUR_GOOGLE_SLIDES_EMBED_LINK"
+      width="960"
+      height="569"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+
+    <h1>Other Garbage</h1>
+
+    <h2>Blender Model, Restful Cube</h2>
+
+    <img
+      class="cube-gif"
+      src="0000-0400.gif"
+      alt="Restful Cube animation">
+
+    <h3>He is the Holy Spirit.</h3>
+
+    <button class="shine-btn">Hover me</button>
+  </main>
+</body>
+</html>
