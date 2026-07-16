@@ -49,6 +49,16 @@
       max-width: 100%;
     }
 
+    .godot-game {
+      display: block;
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16 / 9;
+      margin: 20px auto;
+      border: none;
+      background-color: black;
+    }
+
   </style>
 </head>
 
@@ -62,6 +72,8 @@
   <main>
     <marquee scrollamount="16"><h1><span>If you can beat this game I'll be shocked</span></h1></marquee>
 
+    <iframe src="game-build/index.html" width="960" height="540" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    
   </main>
 </body>
 </html>
