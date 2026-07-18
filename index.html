@@ -48,7 +48,43 @@
     iframe {
       max-width: 100%;
     }
+    .dropdown {
+      position: relative;
+    }
 
+    .projects-button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .project-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      background-color: #222;
+      z-index: 100;
+    }
+
+    .project-links a {
+      display: block;
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      background-color: #50C878;
+    }
+
+    .dropdown:hover .project-links {
+      display: block;
+    }
   </style>
 </head>
 
@@ -65,7 +101,15 @@
     <h2>Welcome to my homepage</h2>
 
     <h3>The tabs indicate projects of mine, make yourself feel at home!</h3>
-    
+
+    <div class="dropdown">
+      <button class="projects-button">Projects ▼</button>
+
+      <div class="project-links">
+        <a href="project1.html">Example 1</a>
+        <a href="project2.html">Example 2</a>
+      </div>
+    </div>
   </main>
 </body>
 </html>
