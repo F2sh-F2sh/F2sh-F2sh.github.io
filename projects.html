@@ -4,30 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Projections</title>
+  <title>Projects</title>
 
   <style>
-    body {
-      background-image: url("PB.jpg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+    :root {
+      --accent: #E3A32C;
+      --text: #FBF2E0;
+      --muted: #D5C4A6;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(rgba(25, 17, 6, 0.88), rgba(25, 17, 6, 0.94)), url("PB.jpg") center / cover fixed;
       min-height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      color: #FBF2E0;
+      color: var(--text);
     }
 
     nav {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
       padding: 15px 30px;
-      background-color: rgba(0, 0, 0, 0.2);
+      background: rgba(20, 14, 5, 0.8);
+      border-bottom: 1px solid rgba(227, 163, 44, 0.3);
     }
 
     nav a {
-      color: white;
+      color: var(--text);
       text-decoration: none;
       padding: 10px 18px;
       border-radius: 6px;
@@ -35,38 +41,41 @@
 
     nav a:hover,
     nav a.active {
-      background-color: #E3A32C;
+      background: var(--accent);
+      color: #211706;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
     }
 
     main {
       width: 100%;
-      max-width: none;
-      box-sizing: border-box;
-      padding: 30px 60px;
+      max-width: 1440px;
+      margin: auto;
+      padding: 40px 48px 64px;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 560px);
-      justify-content: start;
-      gap: 40px;
-      width: 100%;
-    }
+    .page-heading { margin-bottom: 30px; }
+    h1 { margin: 0 0 10px; color: var(--accent); font-size: clamp(2rem, 5vw, 3rem); }
+    .page-heading p { margin: 0; color: var(--muted); line-height: 1.6; }
 
     .project-card {
-      width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
-      background: rgba(22, 20, 18, 0.9);
-      border: 2px solid rgba(251, 242, 224, 0.72);
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: start;
+      background: rgba(34, 25, 12, 0.96);
+      border: 1px solid var(--accent);
       border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.34);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
     }
 
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+    .project-visual {
+      position: sticky;
+      top: 24px;
+      min-width: 0;
+      padding: 24px;
     }
 
     .project-gallery {
@@ -74,85 +83,85 @@
       width: 100%;
       aspect-ratio: 4 / 3;
       overflow: hidden;
-      background: #111;
+      border: 1px solid rgba(227, 163, 44, 0.45);
+      border-radius: 10px;
+      background: #171106;
     }
 
-    .gallery-image {
-      display: none;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .gallery-image.active {
-      display: block;
-    }
+    .gallery-image { display: none; width: 100%; height: 100%; object-fit: cover; }
+    .gallery-image.active { display: block; }
 
     .gallery-button {
       position: absolute;
       top: 50%;
-      width: 32px;
-      height: 32px;
+      width: 44px;
+      height: 44px;
       padding: 0;
       transform: translateY(-50%);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--accent);
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.58);
-      color: white;
-      font-size: 20px;
+      background: rgba(25, 17, 6, 0.9);
+      color: var(--accent);
+      font-size: 26px;
       line-height: 1;
       cursor: pointer;
     }
 
     .gallery-button:hover,
-    .gallery-button:focus-visible {
-      background: #E3A32C;
-    }
-
-    .gallery-button.previous {
-      left: 10px;
-    }
-
-    .gallery-button.next {
-      right: 10px;
-    }
+    .gallery-button:focus-visible { background: var(--accent); color: #211706; }
+    .gallery-button.previous { left: 10px; }
+    .gallery-button.next { right: 10px; }
 
     .gallery-count {
       position: absolute;
       right: 10px;
       bottom: 10px;
-      padding: 4px 8px;
+      padding: 5px 10px;
+      border: 1px solid rgba(227, 163, 44, 0.5);
       border-radius: 12px;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(25, 17, 6, 0.9);
+      color: var(--accent);
       font-size: 12px;
     }
 
-    .project-details {
-      padding: 20px 22px 22px;
+    .project-details { padding-top: 22px; }
+    .project-card h2 { margin: 0 0 12px; color: var(--accent); font-size: 1.75rem; }
+    .project-card p, .project-card li { line-height: 1.7; }
+    .project-card p { margin: 0 0 14px; }
+    .project-details > p { color: var(--muted); }
+
+    .project-facts { display: grid; gap: 16px; margin: 24px 0 0; }
+    .project-facts div { border-top: 1px solid rgba(227, 163, 44, 0.25); padding-top: 12px; }
+    dt { color: var(--accent); font-size: 0.8rem; font-weight: bold; letter-spacing: 0.06em; text-transform: uppercase; }
+    dd { margin: 6px 0 0; line-height: 1.5; }
+
+    .project-description {
+      min-width: 0;
+      padding: 32px;
+      border-left: 1px solid rgba(227, 163, 44, 0.3);
+      overflow-wrap: anywhere;
     }
 
-    .project-card h2 {
-      margin: 0 0 8px;
-      color: #E3A32C;
+    .project-description section + section { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(227, 163, 44, 0.2); }
+    .project-description h3 { margin: 0 0 12px; color: var(--accent); font-size: 1.15rem; }
+    .project-description ul, .project-description ol { margin: 12px 0 16px; padding-left: 24px; }
+    .project-description li + li { margin-top: 8px; }
+    .project-description li::marker { color: var(--accent); }
+    .project-description section > :last-child { margin-bottom: 0; }
+
+    @media (max-width: 900px) {
+      main { padding: 30px 20px 48px; }
+      .project-card { grid-template-columns: minmax(0, 1fr); }
+      .project-visual { position: static; }
+      .project-description { border-left: 0; border-top: 1px solid rgba(227, 163, 44, 0.3); padding: 24px; }
     }
 
-    .project-card p {
-      margin: 0;
-      line-height: 1.5;
-      color: #FBF2E0;
+    @media (max-width: 480px) {
+      main { padding: 24px 12px 40px; }
+      nav { padding: 12px; gap: 4px; }
+      nav a { padding: 10px 12px; }
+      .project-visual, .project-description { padding: 18px; }
     }
-
-    @media (max-width: 700px) {
-      main {
-        padding: 22px 16px;
-      }
-
-      nav {
-        flex-wrap: wrap;
-        padding: 12px 16px;
-      }
-    }
-    
   </style>
 </head>
 
@@ -161,16 +170,20 @@
     <a href="index.html">Home</a>
     <a href="hedgy.html">Hedgy Lore</a>
     <a href="game.html">Game</a>
-    <a class="active" href="projects.html">Projects</a>
+    <a class="active" href="projects.html" aria-current="page">Projects</a>
   </nav>
 
-  <marquee scrollamount="16"><h1><span>The many projects I have created</span></h1></marquee>
-  
   <main>
+
+    <header class="page-heading">
+      <h1>Projects</h1>
+      <p>The things I have designed, built, and learned along the way.</p>
+    </header>
 
     <div class="projects-grid">
 
-      <article class="project-card">
+      <article class="project-card" aria-labelledby="sandevistan-title">
+        <div class="project-visual">
         <div class="project-gallery" aria-label="Sandevistan project photos">
           <img class="gallery-image active" src="assets/projects/sandevistan/IMG_0528.jpeg" alt="Completed Sandevistan costume glowing green while being worn">
           <img class="gallery-image" src="assets/projects/sandevistan/IMG_0525.jpeg" alt="Sandevistan model with its green lights switched on">
@@ -184,8 +197,70 @@
           <span class="gallery-count" aria-live="polite">1 / 7</span>
         </div>
         <div class="project-details">
-          <h2>The Sandevistan</h2>
-          <p>Modeled after the Cyberpunk: Edgerunners cybernetic upgrade found by the main character, David Martinez. The 3D model lights up to simulate the show.</p>
+          <h2 id="sandevistan-title">The Sandevistan</h2>
+          <p>A wearable, illuminated model of David Martinez’s Sandevistan from <cite>Cyberpunk: Edgerunners</cite>, designed and 3D-printed from scratch.</p>
+          <dl class="project-facts">
+            <div><dt>Project type</dt><dd>Electrical, mechanical, and artistic</dd></div>
+            <div><dt>Date completed</dt><dd>September 6</dd></div>
+            <div><dt>Time spent</dt><dd>Approximately two months</dd></div>
+            <div><dt>Final cost</dt><dd>$75 USD</dd></div>
+          </dl>
+        </div>
+        </div>
+
+        <div class="project-description">
+          <section>
+            <h3>Sandevistan Overview</h3>
+            <p>I designed and built a model of the Sandevistan used by the main character, David Martinez, in <cite>Cyberpunk: Edgerunners</cite>. I started this project because I loved the show and its focus on technology. Combined with my own interest in technology, it felt like the perfect thing to make.</p>
+          </section>
+          <section>
+            <h3>Goal</h3>
+            <p>My goal was to create a spine—the Sandevistan—that could:</p>
+            <ul>
+              <li>Be securely attached to my body and worn.</li>
+              <li>Light up.</li>
+              <li>Accurately resemble the Sandevistan from the show.</li>
+            </ul>
+            <p>I also wanted to learn more about 3D modeling, circuitry, and 3D printing throughout the process.</p>
+          </section>
+          <section>
+            <h3>Design and Planning</h3>
+            <p>Before building, I researched similar projects to see what others had done well and which ideas I liked. This helped me develop a clearer vision for my own design. I then created rough 3D models in Blender and Onshape, calculated the necessary dimensions, and planned how the circuitry would fit inside the parts.</p>
+            <p>I chose CosPLA filament because it met my specific design needs. Blender and Onshape let me create the complex models the project required, and I chose a simple lighting circuit to keep the electronics manageable.</p>
+          </section>
+          <section>
+            <h3>Build Process</h3>
+            <ol>
+              <li>Researched and planned the build, identifying all the supplies I needed to buy.</li>
+              <li>Designed the entire spine from scratch in 3D, using my research as a guide.</li>
+              <li>Printed the parts and checked them for design flaws.</li>
+              <li>Tested how the parts fit together and assembled the spine.</li>
+              <li>Checked that the wiring was secure and could withstand handling.</li>
+            </ol>
+            <p>My main tools and materials were Onshape, Blender, the 3D printers at Wake Tech Community College, LED light strips, Velcro, and a battery pack.</p>
+          </section>
+          <section>
+            <h3>Challenges and Problem-Solving</h3>
+            <p>One of the biggest challenges was that my initial model did not fit the lighting circuit properly. At first, I tried to make the circuit fit, but I eventually realized the design needed to change.</p>
+            <p>I remeasured the lighting circuit and adjusted the fit and clearance of the spine parts in my model. After resizing and checking the openings, the wires could pass through them properly.</p>
+            <p>Another challenge was my own perfectionism. I spent weeks making tiny adjustments, which slowed down the overall design process. I overcame this by accepting that the model did not need to be perfect for the project to be worth finishing.</p>
+          </section>
+          <section>
+            <h3>Final Result</h3>
+            <p>The finished project met all my original goals: it could be worn, it lit up, and it resembled the Sandevistan from the show.</p>
+            <p>The final cost was <strong>$75 USD</strong>, and the total development time was <strong>approximately two months</strong>.</p>
+          </section>
+          <section>
+            <h3>What I Learned</h3>
+            <p>Through this project, I became more effective at 3D modeling and gained a better understanding of circuitry and engineering design.</p>
+            <p>More importantly, I learned that perfectionism can get in the way of progress. If I had kept trying to make the model perfect, I might never have finished the project.</p>
+            <p>If I built another version, I would improve my workflow by staying more organized and planning exactly which parts I needed to print and where I would print them.</p>
+          </section>
+          <section>
+            <h3>Supporting Material</h3>
+            <p><strong>Photos:</strong> Browse the project gallery on this page.</p>
+            <p><strong>CAD file:</strong> Sandy V3.43AD</p>
+          </section>
         </div>
       </article>
 
