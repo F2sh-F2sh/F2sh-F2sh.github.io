@@ -45,15 +45,6 @@
       background-color: transparent;
     }
 
-    .belfry-link {
-      display: inline-block;
-      padding: 10px 18px;
-      margin-bottom: 20px;
-      border-radius: 6px;
-      background-color: #2B7A78;
-      color: white;
-    }
-
     iframe {
       max-width: 100%;
     }
@@ -88,7 +79,10 @@
   
   <main>
 
-    <a class="belfry-link" href="sealed-belfry/">Play The Sealed Belfry</a>
+    <section aria-labelledby="belfry-title">
+      <h2 id="belfry-title">The Sealed Belfry</h2>
+      <iframe class="godot-game" src="sealed-belfry/index.html" title="The Sealed Belfry" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </section>
 
     <iframe src="game-build/index.html" width="900" height="590" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 
