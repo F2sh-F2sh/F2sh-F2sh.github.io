@@ -45,25 +45,47 @@
       background-color: transparent;
     }
 
-    iframe {
-      max-width: 100%;
+    .game-options {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
-    .godot-game {
+    .game-options button {
+      display: grid;
+      justify-items: center;
+      gap: 8px;
+      min-width: 100px;
+      padding: 12px 16px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background: #164948;
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .game-options button:hover,
+    .game-options button[aria-pressed="true"] {
+      background: #2B7A78;
+      border-color: white;
+    }
+
+    .game-options img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .game-player iframe {
       display: block;
       width: 100%;
       max-width: 960px;
       aspect-ratio: 16 / 9;
-      margin: 20px auto;
+      margin: 20px auto 0;
       border: none;
       background-color: black;
     }
-
-    .full-marquee {
-      display: block;
-      width: 100%;
-    }
-
   </style>
 </head>
 
@@ -78,17 +100,44 @@
   <marquee scrollamount="16"><h1><span>If you can beat this game I'll be shocked</span></h1></marquee>
   
   <main>
+    <div class="game-options">
+      <button type="button" data-game="sealed-belfry/index.html" aria-label="Play The Sealed Belfry" aria-controls="game-player" aria-pressed="false">
+        <img src="sealed-belfry/index.icon.png" alt="" width="48" height="48">
+        Play
+      </button>
+      <button type="button" data-game="game-build/index.html" aria-label="Play Hackathon Project" aria-controls="game-player" aria-pressed="false">
+        <img src="game-build/index.icon.png" alt="" width="48" height="48">
+        Play
+      </button>
+    </div>
 
-    <section aria-labelledby="belfry-title">
-      <h2 id="belfry-title">The Sealed Belfry</h2>
-      <iframe class="godot-game" src="sealed-belfry/index.html" title="The Sealed Belfry" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </section>
-
-    <iframe src="game-build/index.html" width="900" height="590" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
+    <div class="game-player" id="game-player"></div>
   </main>
 
   <marquee scrollamount="16"><h1><span>The game takes a really long time to load on first visit, please be extremely patient!</span></h1></marquee>
   
+  <script>
+    "use strict";
+
+    const player = document.querySelector("#game-player");
+    const playButtons = document.querySelectorAll(".game-options button");
+
+    for (const button of playButtons) {
+      button.addEventListener("click", () => {
+        if (button.getAttribute("aria-pressed") === "true") return;
+
+        const frame = document.createElement("iframe");
+        frame.title = button.getAttribute("aria-label");
+        frame.allow = "autoplay; fullscreen";
+        frame.allowFullscreen = true;
+        frame.src = button.dataset.game;
+        player.replaceChildren(frame);
+
+        for (const playButton of playButtons) {
+          playButton.setAttribute("aria-pressed", String(playButton === button));
+        }
+      });
+    }
+  </script>
 </body>
 </html>
